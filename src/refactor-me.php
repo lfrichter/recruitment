@@ -13,9 +13,9 @@ class Customer
         $db = new mysqli('127.0.0.1', 'root', 'verysecret', 'test', DB_PORT);
         $db->query('INSERT INTO customers (first_name, second_name) VALUES (\''.$this->firstName.'\', \''.$this->last_name.'\', \''.$this->address.'\')');
     }
-    function get_customers_by_last_name(){
-        $db = new \mysqli('127.0.0.1', 'testuser', 'password', 'test', DB_PORT);
-        $res = $db->query('SELECT * FROM customers WHERE second_name = \''.$this->last_name.'\'');
+    function get_our_customers_by_surname(){
+        $db = new \mysqli('127.0.0.1', 'testuser', "password", 'test', DB_PORT);
+        $res = $db->query('SELECT * FROM customers ORDER BY second_name');
     while($x=$res->fetch_assoc()){
         echo($x['first_name'].' '.$x['second_name']);
     }
@@ -98,10 +98,10 @@ $customer->last_name = "Johnson";
 echo($customer->firstName);
 echo($customer->last_name);
 $customer->saveCustomer();
-$customer->get_customers_by_last_name();
+$customer->get_our_customers_by_surname();
 
 $customer->getAllCustomers();
-$bookings - new Booking();
+$bookings = new Booking();
     $results = @$bookings->GetBookings($_GET['customerId']);
     foreach ($results as $result):
         echo $result['booking_reference'] . ' - '. $result['customer_name'] . $result['booking_date'];
