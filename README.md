@@ -1,4 +1,4 @@
-# Recruitment
+# Recruitment Exercise
 Please review src/refactor-me.php which contains code that desperately needs improving.  There are a number of bugs and design flaws in it that need addressing.
 
 The task is to refactor this code so that it is functional and also much improved from its current state.  Feel free to refactor as much as you like and to use a framework if you prefer.  We want you to consider how the code can be improved; is it maintainable, how can it be made to adhere to best practice 
