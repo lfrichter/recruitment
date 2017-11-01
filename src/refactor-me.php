@@ -4,7 +4,7 @@ define('DB_PORT', 33061);
 class Customer
 {
 
-    public $prefix;
+    public $title;
     public $firstName;
     public $last_name;
     public $address;
@@ -16,12 +16,22 @@ class Customer
     function get_our_customers_by_surname(){
         $db = new \mysqli('127.0.0.1', 'testuser', "password", 'test', DB_PORT);
         $res = $db->query('SELECT * FROM customers ORDER BY second_name');
-    while($x=$res->fetch_assoc()){
-        echo($x['first_name'].' '.$x['second_name']);
+    while($result=$res->fetch_assoc()){
+        echo($this->formatNames($result['first_name'], $result['second_name']));
     }
     }
 
-    function findById(int $id)
+    public function formatNames($firstName, $surname) {
+        $full_name = $firstName .= ' ';
+        $full_name .= $surname;
+
+
+
+        return $full_name;
+    }
+
+
+    function findById(string   $id)
     {
         $db = new \mysqli('127.0.0.1', 'testuser', 'password', 'test', DB_PORT);
         $res = $db->query('SELECT * FROM customers WHERE id = \''.$id.'\'');
@@ -32,6 +42,10 @@ class Customer
             //Get all the customers from the database and output them
             function getAllCustomers(){
                 $db = new \mysqli('127.0.0.1', 'testuser', 'password', 'test', DB_PORT);
+
+
+
+
                 $res = $db->query('SELECT * FROM customers');
                 print '<table>';
                 while ($result = $res->fetch_assoc()){
@@ -40,11 +54,21 @@ class Customer
                     echo '<td>'.$result['second_name'].'</ TD>';
                     echo '</tr>';
                 }
+
+
+
+
                 echo('</table>');
             }
 
 
+
+
+
 }
+
+
+
 
 class Booking {
 
