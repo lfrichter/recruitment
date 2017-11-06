@@ -1,4 +1,3 @@
-USE mybookings;
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -18,7 +17,7 @@ CREATE TABLE `customers` (
 -- ----------------------------
 --  Table structure for `bookings`
 -- ----------------------------
-DROP TABLE IF EXISTS `table_bookings`;
+DROP TABLE IF EXISTS `bookings`;
 CREATE TABLE `bookings` (
   `id` int(10) NOT NULL auto_increment,
   `customerID` int(11) NOT NULL,
@@ -36,5 +35,5 @@ INSERT INTO `customers` (id, first_name, second_name, address) VALUES
 INSERT INTO `bookings` (customerID, booking_reference, booking_date) VALUES
 (1, 'JE122', '2017-01-01'),
 (1, 'JE125', '2017-03-02'),
-(4, 'LT478', '2017-02-15')
+(4, 'LT478', '2017-02-15'),
 (4, 'LT791', '2017-04-01');
