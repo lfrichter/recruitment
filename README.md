@@ -11,5 +11,5 @@ To complete the exercise, please fork this repository and work directly in your 
 We have included a docker setup to allow you to get up and running quickly with this example, though you are under no obligation to use this.  After you have installed docker and forked the repository you will need to:
 
 * Run `docker-compose up` 
-* Import the sample sql file to the database
+* The sample sql should automatically run 
 * Visit http://localhost:8080 in your browser
