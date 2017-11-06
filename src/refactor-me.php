@@ -1,5 +1,5 @@
 <?php
-define('DB_PORT', 33061);
+define('DB_PORT', 3306);
 
 class Customer
 {
@@ -10,11 +10,11 @@ class Customer
     public $address;
 
     function saveCustomer(){
-        $db = new mysqli('127.0.0.1', 'root', 'verysecret', 'test', DB_PORT);
+        $db = new mysqli('database', 'testuser', 'password', 'test', DB_PORT);
         $db->query('INSERT INTO customers (first_name, second_name) VALUES (\''.$this->firstName.'\', \''.$this->last_name.'\', \''.$this->address.'\')');
     }
     function get_our_customers_by_surname(){
-        $db = new \mysqli('127.0.0.1', 'testuser', "password", 'test', DB_PORT);
+        $db = new \mysqli('database', 'testuser', "password", 'test', DB_PORT);
         $res = $db->query('SELECT * FROM customers ORDER BY second_name');
     while($result=$res->fetch_assoc()){
         echo($this->formatNames($result['first_name'], $result['second_name']));
@@ -35,8 +35,8 @@ class Customer
     {
         $db = new \mysqli('127.0.0.1', 'testuser', 'password', 'test', DB_PORT);
         $res = $db->query('SELECT * FROM customers WHERE id = \''.$id.'\'');
-        return $res;
         mysqli_close ($db);
+        return $res;
     }
 
             //Get all the customers from the database and output them
@@ -50,7 +50,7 @@ class Customer
                 print '<table>';
                 while ($result = $res->fetch_assoc()){
                     echo '<TR>';
-                    echo '<td>'.$result['first_name'].'</ td>';
+                    echo '<TD>'.$result['first_name'].'</ td>';
                     echo '<td>'.$result['second_name'].'</ TD>';
                     echo '</tr>';
                 }
