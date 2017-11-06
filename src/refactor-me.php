@@ -50,8 +50,8 @@ class Customer
                 print '<table>';
                 while ($result = $res->fetch_assoc()){
                     echo '<TR>';
-                    echo '<td>'.$result['first_name'].'</td>';
-                    echo '<td>'.$result['second_name'].'</td>';
+                    echo '<TD>'.$result['first_name'].'</ td>';
+                    echo '<td>'.$result['second_name'].'</ TD>';
                     echo '</tr>';
                 }
 
