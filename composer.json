@@ -1,0 +1,13 @@
+{
+    "name": "WilliamCurrie/recruitment",
+    "description": "The Recruitment Test",
+    "keywords": ["recruitment", "test"],
+    "require-dev": {
+        "phpunit/phpunit": "7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Scr\\": "src/"
+        }
+    }
+}
