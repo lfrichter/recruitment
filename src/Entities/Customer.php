@@ -20,17 +20,12 @@ class Customer
         $db = new \mysqli('database', 'testuser', 'password', 'test', DB_PORT);
         $res = $db->query('SELECT * FROM customers ORDER BY second_name');
 
-        while ($result = $res->fetch_assoc()) {
-            echo $this->formatNames($result['first_name'], $result['second_name']);
-        }
+        return $res->fetch_assoc();
     }
 
     public function formatNames($firstName, $surname)
     {
-        $full_name = $firstName .= ' ';
-        $full_name .= $surname;
-
-        return $full_name;
+        return $firstName.' '.$surname;
     }
 
     public function findById(string $id)
