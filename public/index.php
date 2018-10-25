@@ -3,19 +3,17 @@ header('Content-type: text/html; charset=utf-8');
 
 include_once '../config.php';
 
-require __DIR__ . '/../vendor/autoload.php';
+// require_once  __DIR__ . '/../vendor/autoload.php';
 
-spl_autoload_register(null, false);
-spl_autoload_extensions('.php, .class.php');
-
-echo DIR_CLASS_MODEL;
+// spl_autoload_register(null, false);
+// spl_autoload_extensions('.php, .class.php');
 
 function autoloadModel($class)
 {
     $arquivo = DIR_CLASS_MODEL . $class . '.class.php';
 
     if (is_readable($arquivo)) {
-        include_once $arquivo;
+        require_once $arquivo;
     } else {
         return false;
     }
@@ -33,14 +31,14 @@ spl_autoload_register('autoloadModel');
 // require_once 'Src\Entities\Customer';
 // require_once 'Src\Entities\Booking';
 
-$customer = new Customer();
+// $customer = new Customer();
 
-var_dump('begin dump');
-echo '<pre>';
-var_dump($customer);
-echo '</pre>';
+// var_dump('begin dump');
+// echo '<pre>';
+// var_dump($customer);
+// echo '</pre>';
 
-die();
+// die();
 ?>
 
 <!doctype html>
@@ -63,9 +61,11 @@ $customer->firstName = 'Jim';
 $customer->last_name = 'Johnson';
 
 echo $customer->firstName;
-echo $customer->last_name;
+echo ' ' . $customer->last_name;
+
 
 $customer->saveCustomer();
+die();
 $customers = $customer->get_our_customers_by_surname();
 
 while ($customers) {

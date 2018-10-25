@@ -12,7 +12,7 @@ CREATE TABLE `customers` (
   `address` varchar(255) NULL,
   `twitter_alias` varchar(255) NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 --  Table structure for `bookings`
@@ -24,7 +24,7 @@ CREATE TABLE `bookings` (
   `booking_reference` varchar(15) NOT NULL,
   `booking_date` DATETIME NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 INSERT INTO `customers` (id, first_name, second_name, address) VALUES
 (1, 'Jim', 'Edwards', '23 Where I live, Liverpool, L1 3TF'),

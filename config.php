@@ -4,7 +4,15 @@ ini_set('display_startup_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(-1);
 
+
+
+
+define('DB_HOST', 'mysql');
+define('DB_NAME', 'database');
+define('DB_USER', 'default');
+define('DB_PASS', 'secret');
 define('DB_PORT', 3306);
+
 
 define('DS', DIRECTORY_SEPARATOR);
 define('DIR_ROOT_FIS', dirname(__FILE__) . DS);
