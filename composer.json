@@ -8,7 +8,11 @@
     },
     "autoload": {
         "psr-4": {
-            "Scr\\": "src/"
+            "Controllers\\": "src/controllers/",
+            "Models\\": "src/models/"
         }
+    },
+    "require": {
+        "illuminate/database": "^5.7"
     }
 }

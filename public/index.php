@@ -10,7 +10,7 @@ include_once '../config.php';
 
 function autoloadModel($class)
 {
-    $arquivo = DIR_CLASS_MODEL . $class . '.class.php';
+    $arquivo = DIR_CLASS_MODEL.$class.'.class.php';
 
     if (is_readable($arquivo)) {
         require_once $arquivo;
@@ -61,8 +61,7 @@ $customer->firstName = 'Jim';
 $customer->last_name = 'Johnson';
 
 echo $customer->firstName;
-echo ' ' . $customer->last_name;
-
+echo ' '.$customer->last_name;
 
 $customer->saveCustomer();
 die();
