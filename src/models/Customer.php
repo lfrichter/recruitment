@@ -4,13 +4,13 @@ namespace Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Answer extends Model
+class Customer extends Model
 {
-    protected $table = 'answers';
-    protected $fillable = ['answer', 'user_id', 'question_id'];
+    protected $table = 'customers';
+    // protected $fillable = ['customer', 'user_id', 'question_id'];
 
-    public function upvotes()
-    {
-        return $this->hasMany('\Models\Upvote');
-    }
+    // public function upvotes()
+    // {
+    //     return $this->hasMany('\Models\Upvote');
+    // }
 }

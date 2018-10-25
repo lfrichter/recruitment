@@ -1,7 +1,19 @@
 <?php
-header('Content-type: text/html; charset=utf-8');
 
-include_once '../config.php';
+require '../config.php';
+
+require '../vendor/autoload.php';
+
+use Models\Database;
+
+//Initialize Illuminate Database Connection
+new Database();
+
+use Controllers
+
+$user = Users::create_user('user1', 'user1@example.com', 'user1_pass');
+
+header('Content-type: text/html; charset=utf-8');
 
 // require_once  __DIR__ . '/../vendor/autoload.php';
 

@@ -6,9 +6,9 @@ error_reporting(-1);
 
 defined('DBDRIVER') or define('DBDRIVER', 'mysql');
 defined('DBHOST') or define('DBHOST', 'mysql');
-defined('DBNAME') or define('DBNAME', 'qna');
-defined('DBUSER') or define('DBUSER', 'root');
-defined('DBPASS') or define('DBPASS', '');
+defined('DBNAME') or define('DBNAME', 'database');
+defined('DBUSER') or define('DBUSER', 'default');
+defined('DBPASS') or define('DBPASS', 'secret');
 
 define('DB_HOST', 'mysql');
 define('DB_NAME', 'database');
