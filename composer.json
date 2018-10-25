@@ -1,6 +1,7 @@
 {
     "name": "WilliamCurrie/recruitment",
     "description": "The Recruitment Test",
+    "type": "project",
     "keywords": ["recruitment", "test"],
     "require-dev": {
         "phpunit/phpunit": "7"

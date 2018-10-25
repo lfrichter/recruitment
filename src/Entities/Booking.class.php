@@ -1,9 +1,27 @@
 <?php
 
-namespace Src\Entities;
+// namespace Src\Entities;
 
 class Booking
 {
+
+    public function __construct()
+    {
+
+    }
+
+    public function __set($nome, $valor)
+    {
+        if (property_exists(get_class($this), $nome))
+            $this->$nome = $valor;
+    }
+
+    public function __get($nome)
+    {
+        if (property_exists(get_class($this), $nome))
+            return $this->$nome;
+    }
+    
     public function GetBookings($id = false)
     {
         $sql = 'SELCT * FROM bookings';

@@ -1,7 +1,46 @@
 <?php
-define('DB_PORT', 3306);
-require_once 'Src\Entities\Customer';
-require_once 'Src\Entities\Booking';
+header('Content-type: text/html; charset=utf-8');
+
+include_once '../config.php';
+
+require __DIR__ . '/../vendor/autoload.php';
+
+spl_autoload_register(null, false);
+spl_autoload_extensions('.php, .class.php');
+
+echo DIR_CLASS_MODEL;
+
+function autoloadModel($class)
+{
+    $arquivo = DIR_CLASS_MODEL . $class . '.class.php';
+
+    if (is_readable($arquivo)) {
+        include_once $arquivo;
+    } else {
+        return false;
+    }
+}
+
+spl_autoload_register('autoloadModel');
+
+// phpinfo(); die();
+// $path_customer = __DIR__ . '/../src/Entities/Customer.php';
+// echo $path_customer ;
+
+// include($path_customer);
+// include_once '../src/Entities/Customer.php';
+// require __DIR__ . '/../src/Entities/Customer.php';
+// require_once 'Src\Entities\Customer';
+// require_once 'Src\Entities\Booking';
+
+$customer = new Customer();
+
+var_dump('begin dump');
+echo '<pre>';
+var_dump($customer);
+echo '</pre>';
+
+die();
 ?>
 
 <!doctype html>

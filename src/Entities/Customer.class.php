@@ -1,6 +1,6 @@
 <?php
 
-namespace Src\Entities;
+// namespace Src\Entities;
 
 class Customer
 {
@@ -9,6 +9,22 @@ class Customer
     public $last_name;
     public $address;
 
+    public function __construct(){
+
+    }
+
+    public function __set($nome, $valor)
+    {
+        if (property_exists(get_class($this), $nome))
+            $this->$nome = $valor;
+    }
+
+    public function __get($nome)
+    {
+        if (property_exists(get_class($this), $nome))
+            return $this->$nome;
+    }
+    
     public function saveCustomer()
     {
         $db = new mysqli('database', 'testuser', 'password', 'test', DB_PORT);
