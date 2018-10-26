@@ -10,7 +10,7 @@ defined('DBNAME') or define('DBNAME', 'database');
 defined('DBUSER') or define('DBUSER', 'default');
 defined('DBPASS') or define('DBPASS', 'secret');
 
-define('DB_HOST', 'mysql');
+define('DB_HOST', '127.0.0.1');
 define('DB_NAME', 'database');
 define('DB_USER', 'default');
 define('DB_PASS', 'secret');
