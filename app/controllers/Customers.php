@@ -6,9 +6,28 @@ use Models\Customer;
 
 class Customers
 {
-    public static function create_customer(array $arr)
+    public static function create(array $arr)
     {
-        $customer = Customer::create($arr);
+        return Customer::create($arr);
+    }
+
+    public static function get($orderBy = 'second_name', $sort = 'ASC')
+    {
+        return Customer::orderBy($orderBy, $sort)->get();
+    }
+
+    public static function getByName($first_name, $second_name)
+    {
+        return Customer::where('first_name', $first_name)->where('second_name', $second_name)->first();
+    }
+
+    public static function firstOrCreate($first_name, $second_name)
+    {
+        $customer = Customers::getByName($first_name, $second_name);
+
+        if (empty($customer)) {
+            $customer = Customers::create(compact('first_name', 'second_name'));
+        }
 
         return $customer;
     }
