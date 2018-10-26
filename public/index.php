@@ -1,96 +1,110 @@
 <?php
+require '../start.php';
+use Controllers\Customers;
+use Controllers\Bookings;
 
-require '../config.php';
+$customers = Customers::get();
 
-require '../vendor/autoload.php';
+/**
+ * Customer_id selected.
+ */
+$customer_id = isset($_GET['customerId']) ? $_GET['customerId'] : '';
 
-use Models\Database;
-
-//Initialize Illuminate Database Connection
-new Database();
-
-use Controllers
-
-$user = Users::create_user('user1', 'user1@example.com', 'user1_pass');
+/**
+ * Customer data received.
+ */
+$first_name = 'Jim';
+$second_name = 'Johnson';
+$customer = Customers::firstOrCreate($first_name, $second_name);
 
 header('Content-type: text/html; charset=utf-8');
-
-// require_once  __DIR__ . '/../vendor/autoload.php';
-
-// spl_autoload_register(null, false);
-// spl_autoload_extensions('.php, .class.php');
-
-function autoloadModel($class)
-{
-    $arquivo = DIR_CLASS_MODEL.$class.'.class.php';
-
-    if (is_readable($arquivo)) {
-        require_once $arquivo;
-    } else {
-        return false;
-    }
-}
-
-spl_autoload_register('autoloadModel');
-
-// phpinfo(); die();
-// $path_customer = __DIR__ . '/../src/Entities/Customer.php';
-// echo $path_customer ;
-
-// include($path_customer);
-// include_once '../src/Entities/Customer.php';
-// require __DIR__ . '/../src/Entities/Customer.php';
-// require_once 'Src\Entities\Customer';
-// require_once 'Src\Entities\Booking';
-
-// $customer = new Customer();
-
-// var_dump('begin dump');
-// echo '<pre>';
-// var_dump($customer);
-// echo '</pre>';
-
-// die();
 ?>
 
 <!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My Simple  App</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>My Simple App</title>
+    <link rel="stylesheet" href="/assets/bootstrap-4.0.0/dist/css/bootstrap.min.css">
 </head>
-
 <body>
-<h1>Simple Database App</h1>
+<div class="container">
 
-<?php
-$customer = new Customer();
-$customer->firstName = 'Jim';
-$customer->last_name = 'Johnson';
+    <h1>Simple Database App</h1>
 
-echo $customer->firstName;
-echo ' '.$customer->last_name;
+    <?php echo $customer->getFullName(); ?><br />
 
-$customer->saveCustomer();
-die();
-$customers = $customer->get_our_customers_by_surname();
+    <ul>
+        <?php foreach ($customers as $key => $customer): ?>
+        <li><a href="/?customerId=<?php echo $customer->id; ?>"><?php echo $customer->getFullName(); ?></a></li>    
+        <?php endforeach; ?>
+    </ul>
+    <hr>
+    <br />
+    <h2>Customers</h2>
 
-while ($customers) {
-    echo $customer->formatNames($result['first_name'], $result['second_name']);
-}
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>First name</th>
+                    <th>Second name</th>
+                    <th class="text-center">Bookings</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($customers->sortBy('first_name') as $key => $customer) : ?>
+                <tr>
+                    <td><?php echo $customer->first_name; ?></td>
+                    <td><?php echo $customer->second_name; ?></td>
+                    <td class="text-center"><?php echo $customer->bookings->count(); ?></td>
+                    <td class="text-center">
+                        <?php if ($customer->bookings->count()): ?>
+                        <a href="/?customerId=<?php echo $customer->id; ?>" class="btn-sm btn-primary">Bookings</a>
+                        <?php endif; ?>
+                    </td>
+                </tr>  
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <hr>
 
-$customer->getAllCustomers();
-$bookings = new Booking();
-$results = @$bookings->GetBookings($_GET['customerId']);
+    
+    <?php
+        if (!empty($customer_id)) {
+            $bookings = Bookings::getByCustomerId($customer_id); ?>
+        
+        <h2>Bookings</h2>
 
-foreach ($results as $result):
-    echo $result['booking_reference'].' - '.$result['customer_name'].$result['booking_date'];
-endforeach;
-?>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Reference</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($bookings as $key => $booking) : ?>
+                    <tr>
+                        <td><?php echo $booking->booking_reference; ?></td>
+                        <td><?php echo $booking->customer->getFullName(); ?></td>
+                        <td><?php echo $booking->booking_date; ?></td>
+                    </tr>  
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    <?php
+        } ?>
+</div>
 
+<script src="/assets/bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
+<script src="/assets/bootstrap-4.0.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
