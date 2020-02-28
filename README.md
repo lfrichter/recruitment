@@ -14,3 +14,16 @@ We have included a docker setup to allow you to get up and running quickly with 
 * The sample sql should automatically run 
 * Visit http://localhost:8080 in your browser
 
+---
+
+- I have not yet created the unit tests, I can do it also at the weekend.
+- After several attempts to up the native `docker-compose` application, unfortunately I had to use a `laradock` that was effective enough, I left a folder with the settings I used, in my case it was in windows environment.
+- I started trying to reuse some things like `mysqli`, but I changed my mind and decided to use `Eloquent` though still maintaining the simplicity of the application without a framework.
+- I also send some screenshots of the running application, any questions I am at disposal.
+
+### Index
+![PageOne](https://i.imgur.com/B6v4ydO.jpg)
+
+### Bookings
+![bookings](https://i.imgur.com/bo5i6ZW.jpg)
+
