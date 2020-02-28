@@ -16,7 +16,7 @@ We have included a docker setup to allow you to get up and running quickly with 
 
 ---
 
-## Notes about my task
+## Notes about the task I did
 
 - I have not yet created the unit tests, I can do it also at the weekend.
 - After several attempts to up the native `docker-compose` application, unfortunately I had to use a `laradock` that was effective enough, I left a folder with the settings I used, in my case it was in windows environment.
